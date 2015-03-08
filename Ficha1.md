@@ -1,8 +1,7 @@
 Ficha 1
 =====================
 
-1. Codifique em Haskell as funcões ***length :: [a] -> Int***  e  ***reverse :: [a] -> [a]*** que conhece da disciplina de Programação Funcional (PF) e que, respectivamente, calculam o comprimento da lista de entrada e a invertem.
-----------------------
+#### 1. Codifique em Haskell as funcões `length :: [a] -> Int` e  `reverse :: [a] -> [a]`que conhece da disciplina de Programação Funcional (PF) e que, respectivamente, calculam o comprimento da lista de entrada e a invertem.
 
 **R:**
 
@@ -14,12 +13,11 @@ Ficha 1
     reverse1 [] = []
     reverse1 (x:xs) = reverse xs ++ [x]
 
-2. Recorde o tipo que se usa em Haskell para representar valores opcionais:
-----------------------
+#### 2. Recorde o tipo que se usa em Haskell para representar valores opcionais:
 
     data Maybe a = Nothing | Just a
    
-Defina a funcão ***catMaybes :: [Maybe a] -> [a]*** que extrai o conteúdo útil da lista de entrada.
+Defina a funcão `catMaybes :: [Maybe a] -> [a]`que extrai o conteúdo útil da lista de entrada.
 
 **R:**
 
@@ -28,12 +26,11 @@ Defina a funcão ***catMaybes :: [Maybe a] -> [a]*** que extrai o conteúdo úti
     catMaybes (Nothing: xs)  =     catMaybes xs
     catMaybes ((Just x):xs) = x : catMaybes xs
 
-3. Apresente definições em Haskell das seguintes funções que estudou em PF:
-----------------------
+#### 3. Apresente definições em Haskell das seguintes funções que estudou em PF:
 
-***uncurry :: (a -> b -> c) -> (a, b) -> c***  (que emparelha os argumentos de uma função)  
-***curry :: ((a, b) -> c) -> a -> b -> c***    (que faz o efeito inverso da anterior)  
-***flip :: (a -> b -> c) -> b -> a -> c***     (que troca a ordem dos argumentos de uma função)
+`uncurry :: (a -> b -> c) -> (a, b) -> c`(que emparelha os argumentos de uma função)  
+`curry :: ((a, b) -> c) -> a -> b -> c`(que faz o efeito inverso da anterior)  
+`flip :: (a -> b -> c) -> b -> a -> c`(que troca a ordem dos argumentos de uma função)
 
 **R:**
 
@@ -46,16 +43,15 @@ Defina a funcão ***catMaybes :: [Maybe a] -> [a]*** que extrai o conteúdo úti
     flip :: (a -> b -> c) -> b -> a -> c
     flip f b a = f a b
 
-4. Considere a seguinte declaração de um tipo de *árvores binárias*, em Haskell:
-----------------------
+#### 4. Considere a seguinte declaração de um tipo de *árvores binárias*, em Haskell:
 
     data LTree a = Leaf a | Fork (LTree a, LTree a)
 
 Codifique as funções seguintes:
 
-* ***flatten :: LTree a -> [a]*** - que deverá dar a lista de elementos da árvore argumento
-* ***mirror :: LTree a -> LTree a*** - que deverá espelhar a árvore argumento
-* ***fmap :: (b -> a) -> LTree b -> LTree a*** - que deverá transformar cada folha *x* da árvore argumento na folha *f x*
+* `flatten :: LTree a -> [a]`- que deverá dar a lista de elementos da árvore argumento
+* `mirror :: LTree a -> LTree a`- que deverá espelhar a árvore argumento
+* `fmap :: (b -> a) -> LTree b -> LTree a`- que deverá transformar cada folha *x* da árvore argumento na folha *f x*
 
 **R:**
 
@@ -71,12 +67,11 @@ Codifique as funções seguintes:
         fmap1 f (Leaf a) = Leaf (f a)
         fmap1 f (Fork (leftBranch, rightBranch)) = Fork (fmap1 f leftBranch, fmap1 f rightBranch)
 
-5. A composição de funções define-se, emm Haskell, tal como na matemática:
-----------------------
+#### 5. A composição de funções define-se, emm Haskell, tal como na matemática:
 
-     ***(f · g) x = f (g x)***
+     `f · g) x = f (g x`)
 
-* Calcula ***(f · g) x*** para os casos seguintes:
+* Calcula `f · g) x`para os casos seguintes:
 
     **R:**
 
@@ -96,7 +91,7 @@ Codifique as funções seguintes:
         g4 (x, y) = x + y
         f4g4 (x, y) = succ (2 * (x + y))
 
-* Mostre que ***(f · g) · h = f · (g · h)***, quaisquer que sejam f, g e h.
+* Mostre que `f · g) · h = f · (g · h)`quaisquer que sejam f, g e h.
 
     **R:**
 
@@ -106,7 +101,7 @@ Codifique as funções seguintes:
             (f · g) (h x) = f ((g · h)) x)
             f (g (h x))   = f (g (h x))
 
-* A função ***id :: a -> a*** é tal que ***id x = x***. Mostre que ***f · id = id · f = f*** qualquer que seja ***f***.
+* A função `id :: a -> a`é tal que `id x = x`. Mostre que `f · id = id · f = f`qualquer que seja `f`.
 
     **R:** 
 
@@ -128,14 +123,13 @@ Codifique as funções seguintes:
             f x = f x
 
 
-6. Atente na definição seguinte de um dos combinadores emblemáticos da linguagem Haskell, que já conhece de PF:
-----------------------
+#### 6. Atente na definição seguinte de um dos combinadores emblemáticos da linguagem Haskell, que já conhece de PF:
         
     foldr :: (a -> b -> b) -> b -> [a] -> b
     foldr g z []     = z
     foldr g z (x:xs) = x `g` (foldr g z xs)
 
-* Defina ***length :: [a] -> Int*** using foldr.
+* Defina `length :: [a] -> Int`using foldr.
 
     **R:** 
 
@@ -143,18 +137,17 @@ Codifique as funções seguintes:
         length2 xs = foldr (\_ n -> succ n) 0 xs
         
 
-* O que faz a função ***f = foldr (:) []*** ? **Sugestão**: comece por copiar a definição dada e faça literalmente as substituições ***g := (:)*** e ***z := []***. De seguida substitua ***foldr (:) []*** por ***f***. Obtém assim uma definição explícita de f, sem recorrer ao combinador dado, que e mais fácil de inspeccionar.
+* O que faz a função `f = foldr (:) []`? **Sugestão**: comece por copiar a definição dada e faça literalmente as substituições `g := (:)`e `z := []`. De seguida substitua `foldr (:) []`por `f`. Obtém assim uma definição explícita de f, sem recorrer ao combinador dado, que e mais fácil de inspeccionar.
 
     **R:** 
 
         f []     = []
         f (x:xs) = x : (f xs)
 
-    A função ***f*** é a função identidade para uma lista.
+    A função `f`é a função identidade para uma lista.
 
 
-7. Re-defina a função
-----------------------
+#### 7. Re-defina a função
 
     concat1 :: [[a]] -> [a]
     concat1 = foldr (++) []
@@ -167,8 +160,7 @@ sem recorrer ao combinador foldr (Sugestão: faça como na questão 6).
     concat2 [] = []
     concat2 (x:xs) = x ++ (concat xs)
 
-8. Diga por palavras suas o que faz a função
-----------------------
+#### 8. Diga por palavras suas o que faz a função
 
     f :: [Int] -> [Int]
     f s = [a + 1 | a <- s, a > 0]
@@ -180,8 +172,7 @@ e escreva-a sob a forma de um foldr.
         ffold :: [Int] -> [Int]
         ffold s = foldr (\x xs -> if x > 0 then ((x + 1):xs) else xs) [] s
 
-9. Considera a função *m* seguinte:
-----------------------
+#### 9. Considera a função *m* seguinte:
 
     m :: (a -> b) -> [a] -> [b]
     m f [] = []
@@ -201,7 +192,7 @@ e escreva-a sob a forma de um foldr.
 
         m2 = map
 
-* Qual o tipo de expressão ***m (\x -> [x])*** ? E o que faz essa expressão?
+* Qual o tipo de expressão `m (\x -> [x])`? E o que faz essa expressão?
 
         m (\x -> [x]) :: [a] -> [[a]]
 
@@ -213,7 +204,7 @@ e escreva-a sob a forma de um foldr.
                [[4], [1], [3], [7]]
             
 
-* Abreviando a função ***\x -> [x]*** pela designação *singl*, averigue qual o resultado das expressões
+* Abreviando a função `x -> [x]`pela designação *singl*, averigue qual o resultado das expressões
             
         let s = m singl "Calculo de Programas"
         in concat s
