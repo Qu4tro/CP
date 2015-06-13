@@ -28,10 +28,14 @@ Ficha 3
 
 #### 2. Considere a função `undistl = [i1 × id, i2 × id]`.
 
-* Identifique o isomorfismo que ela testemunha, desenhando o diagrama respectivo.
+    * Identifique o isomorfismo que ela testemunha, desenhando o diagrama respectivo.
 
-    TODO
-    (A × C) + (B × C) ≅ (A + B) × C
+**R:**
+
+(A × C) + (B × C) ≅ (A + B) × C
+
+
+![Diagram of undistl isomorphism](/images/undistl_iso.png)
 
 * Recorra à lei da troca para re-escrever undistl sob a forma de um split.
 
