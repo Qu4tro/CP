@@ -4,7 +4,7 @@ Ficha 2
 #### 1. Seja dada a funcão `swap = <π2, π1>`. Faca um diagrama que explique o tipo de swap e mostre, usando o cálculo de programas, que `swap · swap = id`, onde id é a funcão identidade.
 
 **R:**
-![Swap diagram](https://rawgit.com/Qu4tro/CP/master/images/swap.svg)
+![Swap diagram](/images/swap.png)
 
     swap · swap = id
     ≡ Def-swap
@@ -22,7 +22,7 @@ Ficha 2
 #### 2. Repita a questão anterior para a funcão `coswap = [i2, i1]`.
 
 **R:**
-![Coswap diagram](https://rawgit.com/Qu4tro/CP/master/images/coswap.svg)
+![Coswap diagram](/images/coswap.png)
 
     coswap · coswap = id
     ≡ Def-coswap
