@@ -22,7 +22,7 @@ Ficha 2
 #### 2. Repita a questão anterior para a funcão `coswap = [i2, i1]`.
 
 **R:**
-> TODO - Image
+![Coswap diagram](https://rawgit.com/Qu4tro/CP/master/images/coswap.svg)
 
     coswap · coswap = id
     ≡ Def-coswap
@@ -204,7 +204,7 @@ no **formulário** da disciplina e demonstre-as usando o cálculo de programas.
     ≡ Natural-id
     id = id
 
-* Use a primeira para demonstrar a lei
+* Use também a segunda para demonstrar a lei
 
         [f, g] = [h, k] ≡ f = h
                           g = k
@@ -213,8 +213,13 @@ no **formulário** da disciplina e demonstre-as usando o cálculo de programas.
 
 **R:**
 
-    TODO
-
+        [f, g] = [h, k]
+        ≡ Universal-+
+        [f, g] · i1 = h
+        [f, g] · i2 = k
+        ≡ Cancelamento-+
+        f = h
+        g = k
 
 #### 7. Considera uma função *d* da qual apenas conhece duas propriedades:
 
