@@ -4,7 +4,7 @@ Ficha 2
 #### 1. Seja dada a funcão `swap = <π2, π1>`. Faca um diagrama que explique o tipo de swap e mostre, usando o cálculo de programas, que `swap · swap = id`, onde id é a funcão identidade.
 
 **R:**
-> TODO - Image
+![Swap diagram](https://rawgit.com/Qu4tro/CP/master/images/swap.svg)
 
     swap · swap = id
     ≡ Def-swap
