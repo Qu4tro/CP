@@ -78,7 +78,8 @@ TODO
     ≡ Natural-i2 (24)
     f = i2 . π1 ⋅ π2
 
-f :: A × (B × C) -> _ + C
+
+    f :: A × (B × C) -> _ + C
 
 ![Diagram of free property of f](/images/f_nat.png)
 
@@ -104,68 +105,68 @@ Propriedade grátis:
 
 * Confirme, por cálculo analítico, essa propriedade.
 
-    (id × f) · iso = iso · (f + f)
-    ≡ Def-iso
-    (id × f) · <! + !, [id, id]> = iso · (f + f)
-    ≡ Absorção-× (10)
-    <id ⋅ (! + !), f ⋅ [id, id]> = iso · (f + f)
-    ≡ Natural-id (1)
-    <! + !, f ⋅ [id, id]> = iso · (f + f)
-    ≡ Fusão-+ (20)
-    <! + !, [f ⋅ id, f ⋅ id]> = iso · (f + f)
-    ≡ Natural-id (1)
-    <! + !, [f, f]> = iso · (f + f)
-    ≡ Def-+ (22)
-    <[i1 ⋅ !, i2 ⋅ !], [f, f]> = iso · (f + f)
-    ≡ Lei da troca (28)
-    [<i1 ⋅ !, f>, <i2 ⋅ !, f>] = iso · (f + f)
-    ≡ Natural-id (1)
-    [<i1 ⋅ !, id ⋅ f>, <i2 ⋅ !, id ⋅ f>] = iso · (f + f)
-    ≡ Natural-const (3)
-    [<i1 ⋅ ! ⋅ f, id ⋅ f>, <i2 ⋅ ! ⋅ f, id ⋅ f>] = iso · (f + f)
-    ≡ Fusão-× (9)
-    [<i1 ⋅ !, id> ⋅ f, <i2 ⋅ !, id> ⋅ f] = iso · (f + f)
-    ≡ Absorção-+ (10)
-    [<i1 ⋅ !, id>, <i2 ⋅ !, id>] · (f + f) = iso · (f + f)
-    ≡ Lei da troca (28)
-    <[i1 ⋅ !, i2 ⋅ !], [id, id]> · (f + f) = iso · (f + f)
-    ≡ Def-+ (22)
-    <! + !, [id, id]> · (f + f) = iso · (f + f)
-    ≡ Def-iso 
-    iso · (f + f) = iso · (f + f)
+        (id × f) · iso = iso · (f + f)
+        ≡ Def-iso
+        (id × f) · <! + !, [id, id]> = iso · (f + f)
+        ≡ Absorção-× (10)
+        <id ⋅ (! + !), f ⋅ [id, id]> = iso · (f + f)
+        ≡ Natural-id (1)
+        <! + !, f ⋅ [id, id]> = iso · (f + f)
+        ≡ Fusão-+ (20)
+        <! + !, [f ⋅ id, f ⋅ id]> = iso · (f + f)
+        ≡ Natural-id (1)
+        <! + !, [f, f]> = iso · (f + f)
+        ≡ Def-+ (22)
+        <[i1 ⋅ !, i2 ⋅ !], [f, f]> = iso · (f + f)
+        ≡ Lei da troca (28)
+        [<i1 ⋅ !, f>, <i2 ⋅ !, f>] = iso · (f + f)
+        ≡ Natural-id (1)
+        [<i1 ⋅ !, id ⋅ f>, <i2 ⋅ !, id ⋅ f>] = iso · (f + f)
+        ≡ Natural-const (3)
+        [<i1 ⋅ ! ⋅ f, id ⋅ f>, <i2 ⋅ ! ⋅ f, id ⋅ f>] = iso · (f + f)
+        ≡ Fusão-× (9)
+        [<i1 ⋅ !, id> ⋅ f, <i2 ⋅ !, id> ⋅ f] = iso · (f + f)
+        ≡ Absorção-+ (10)
+        [<i1 ⋅ !, id>, <i2 ⋅ !, id>] · (f + f) = iso · (f + f)
+        ≡ Lei da troca (28)
+        <[i1 ⋅ !, i2 ⋅ !], [id, id]> · (f + f) = iso · (f + f)
+        ≡ Def-+ (22)
+        <! + !, [id, id]> · (f + f) = iso · (f + f)
+        ≡ Def-iso 
+        iso · (f + f) = iso · (f + f)
 
 
 * Derive uma definição em Haskell *pointwise* de iso.
 
-    iso = <! + !, [id, id]>
-    ≡ Def-+ (22)
-    iso = <[i1 ⋅ !, i2 ⋅ !], [id, id]>
-    ≡ Lei da troca (28)
-    iso = [<i1 ⋅ !, id>, <i2 ⋅ !, id>]
-    ≡ Universal-+ (17)
-    iso . i1 = <i1 ⋅ !, id>
-    iso . i2 = <i2 ⋅ !, id>
-    ≡ Igualdade extensional (71)
-    (iso . i1) x = <i1 ⋅ !, id> x
-    (iso . i2) x = <i2 ⋅ !, id> x
-    ≡ Def-comp (72)
-    iso (i1 x) = <i1 ⋅ !, id> x
-    iso (i2 x) = <i2 ⋅ !, id> x
-    ≡ Def-split (76)
-    iso (i1 x) = ((i1 ⋅ !) x, id x)
-    iso (i2 x) = ((i2 ⋅ !) x, id x)
-    ≡ Def-id (73)
-    iso (i1 x) = ((i1 ⋅ !) x, x)
-    iso (i2 x) = ((i2 ⋅ !) x, x)
-    ≡ Assoc-comp (2)
-    iso (i1 x) = (i1 ⋅ (! x), x)
-    iso (i2 x) = (i2 ⋅ (! x), x)
-    ≡ Def-comp (72)
-    iso (i1 x) = (i1 (! x), x)
-    iso (i2 x) = (i2 (! x), x)
-    ≡ Def-!
-    iso (i1 x) = (i1 (), x)
-    iso (i2 x) = (i2 (), x)
+        iso = <! + !, [id, id]>
+        ≡ Def-+ (22)
+        iso = <[i1 ⋅ !, i2 ⋅ !], [id, id]>
+        ≡ Lei da troca (28)
+        iso = [<i1 ⋅ !, id>, <i2 ⋅ !, id>]
+        ≡ Universal-+ (17)
+        iso . i1 = <i1 ⋅ !, id>
+        iso . i2 = <i2 ⋅ !, id>
+        ≡ Igualdade extensional (71)
+        (iso . i1) x = <i1 ⋅ !, id> x
+        (iso . i2) x = <i2 ⋅ !, id> x
+        ≡ Def-comp (72)
+        iso (i1 x) = <i1 ⋅ !, id> x
+        iso (i2 x) = <i2 ⋅ !, id> x
+        ≡ Def-split (76)
+        iso (i1 x) = ((i1 ⋅ !) x, id x)
+        iso (i2 x) = ((i2 ⋅ !) x, id x)
+        ≡ Def-id (73)
+        iso (i1 x) = ((i1 ⋅ !) x, x)
+        iso (i2 x) = ((i2 ⋅ !) x, x)
+        ≡ Assoc-comp (2)
+        iso (i1 x) = (i1 ⋅ (! x), x)
+        iso (i2 x) = (i2 ⋅ (! x), x)
+        ≡ Def-comp (72)
+        iso (i1 x) = (i1 (! x), x)
+        iso (i2 x) = (i2 (! x), x)
+        ≡ Def-!
+        iso (i1 x) = (i1 (), x)
+        iso (i2 x) = (i2 (), x)
 
 
 #### 5. Identifique, apoiando a sua resolução num diagrama, qual é a definição da função polimórfica α cuja propriedade natural ("grátis") é
