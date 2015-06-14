@@ -6,7 +6,7 @@ Ficha 2
 **R:**
 
 
-![Swap diagram](/images/swap.png)
+![Swap diagram](/images/swap_nat.png)
 
     swap · swap = id
     ≡ Def-swap
@@ -26,7 +26,7 @@ Ficha 2
 **R:**
 
 
-![Coswap diagram](/images/coswap.png)
+![Coswap diagram](/images/coswap_nat.png)
 
     coswap · coswap = id
     ≡ Def-coswap
