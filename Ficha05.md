@@ -38,9 +38,6 @@ Propriedade natural
 
 **R:**
 
-
-WRONG
-
     (g × f) ⋅ swap = swap ⋅ (f × g)
     f ⋅ id = id ⋅ f 
 
@@ -50,29 +47,40 @@ WRONG
     ≡ Natural-swap
     (swap × id) ⋅ swap ⋅ x = x ⋅ twist
     ≡ Porque swap leva um split como argumento, expandimos o x
-    (swap × id) ⋅ swap ⋅ (f × z) = (f × z) ⋅ twist
+    (swap × id) ⋅ swap ⋅ (f × z) = (z × f) ⋅ twist
     ≡ Def-swap 
-    (swap × id) ⋅ <π2, π1> ⋅ (f × z) = (f × z) ⋅ twist
+    (swap × id) ⋅ <π2, π1> ⋅ (f × z) = (z × f) ⋅ twist
     ≡ Fusão-×
-    (swap × id) ⋅ <π2 ⋅ (f × z), π1 ⋅ (f × z)>  = (f × z) ⋅ twist
+    (swap × id) ⋅ <π2 ⋅ (f × z), π1 ⋅ (f × z)>  = (z × f) ⋅ twist
     ≡ Natural-π1; Natural-π2
-    (swap × id) ⋅ <z ⋅ π2, f ⋅ π1>  = (f × z) ⋅ twist
+    (swap × id) ⋅ <z ⋅ π2, f ⋅ π1>  = (z × f) ⋅ twist
     ≡ Absorção-×; Natural-id
-    <swap ⋅ z ⋅ π2, f ⋅ π1>  = (f × z) ⋅ twist
+    <swap ⋅ z ⋅ π2, f ⋅ π1>  = (z × f) ⋅ twist
     ≡ Porque swap leva um split como argumento, expandimos o z
-    <swap ⋅ (g × h) ⋅ π2, f ⋅ π1>  = (f × (g × h)) ⋅ twist
+    <swap ⋅ (g × h) ⋅ π2, f ⋅ π1>  = ((h × g) × f) ⋅ twist
     ≡ Def-×
-    (swap ⋅ (g × h)) × f = (f × (g × h)) ⋅ twist
+    (swap ⋅ (g × h)) × f = ((h × g) × f) ⋅ twist
 
 Não podemos fazer nada, por isso já sabemos a primeira parte da propriedade grátis de twist. Vamos agora descobrir a segunda.
 
-    (f × (g × h)) ⋅ twist
+    ((h × g) × f) ⋅ twist
     ≡ Def-twist
-    (f × (g × h)) ⋅ (swap ⋅ (id × swap))
-    ≡ Assoc-comp (2); Natural-swap
-    (swap ⋅ ((g × h) × f)) ⋅ (id × swap)
+    ((h × g) × f) ⋅ (swap · (id × swap))
+    ≡ Assoc-comp (2)
+    (((h × g) × f) ⋅ swap) · (id × swap)
+    ≡ Def-swap
+    (swap ⋅ (f × (h × g))) · (id × swap)
+    ≡ Functor-x (14)
+    swap ⋅ ((f ⋅ id) × ((h × g)) ⋅ swap)
+    ≡ Natural-swap
+    swap ⋅ ((f ⋅ id) × (swap . (g × h)))
+    ≡ Natural-id
+    swap ⋅ ((id ⋅ f) × (swap . (g × h)))
+    ≡ Functor-x (14)
+    swap ⋅ (id × swap) ⋅ (f × (g × h))
+    ≡ Def-twist
+    twist ⋅ (f × (g × h))
 
-    
 
 #### 4. 
 
