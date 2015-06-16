@@ -74,10 +74,11 @@ TODO
 
 #### 3. Deduza o tipo mais geral da função `f = (id + π1) · i2 · π2` e infira a respectiva propriedade *grátis (natural)* através de um diagrama.
 
+**R:**
+
     f = (id + π1) ⋅ i2 ⋅ π2
     ≡ Natural-i2 (24)
     f = i2 . π1 ⋅ π2
-
 
     f :: A × (B × C) -> _ + C
 
@@ -92,6 +93,8 @@ Propriedade grátis:
 
 * Identifique o isomorfismo que ela testemunha, desenhando-a sob a forma de um diagrama de tipos.
 
+**R:**
+
     A + A ≅ (1 + 1) × A  
     ≡  
     A + A ≅ 2 × A
@@ -104,6 +107,8 @@ Propriedade grátis:
     (id × f) · iso = iso · (f + f)
 
 * Confirme, por cálculo analítico, essa propriedade.
+
+**R:**
 
         (id × f) · iso = iso · (f + f)
         ≡ Def-iso
@@ -137,6 +142,8 @@ Propriedade grátis:
 
 
 * Derive uma definição em Haskell *pointwise* de iso.
+
+**R:**
 
         iso = <! + !, [id, id]>
         ≡ Def-+ (22)
@@ -173,6 +180,8 @@ Propriedade grátis:
 
     (f + h) · α = α · (f + g × h)
 
+**R:**
+
 ![Diagram of alpha's natural property](/images/alpha_nat.png)
 
     α :: A + (B × C) -> A + C
@@ -185,7 +194,7 @@ Se o argumento estiver encapsulado por i2 devolver o 2º elemento do split.
 
     f · h = g · h ≡ f = g
 
-Recorra a esta propriedade para mostrar uqe a igualdade
+Recorra a esta propriedade para mostrar que a igualdade
 
     h · distr · (g × (id + f)) = k
 
@@ -195,6 +204,7 @@ Recorra a esta propriedade para mostrar uqe a igualdade
 
 *Sugestão:* não ignore a propriedade natural do isomorfismo distr.
 
+TODO
 
 #### 7. Considere a seguinte declaração de um tipo de *árvores binárias*, em Haskell:
 
@@ -206,9 +216,141 @@ Tendo em conta a função `inLTree = [Leaf, Fork]`, calcula a sua inversa
     outLTree (Leaf a) = i1 a
     outLTree (Fork (x, y)) = i2 (x, y)
 
-resolvendo a equação `outLTree . inLTree = id` em ordem a `outLTree`.
+resolvendo a equação `outLTree ⋅ inLTree = id` em ordem a `outLTree`⋅
 
-#### 8. 
+**R:**
 
+    outLTree ⋅ inLTree = id
+    ≡ Def-inTree
+    outLTree ⋅ [Leaf, Fork] = id
+    ≡ Fusão-+ (20)
+    [outLTree ⋅ Leaf, outLTree ⋅ Fork] = id
+    ≡ Reflexão-+ (19)
+    [outLTree ⋅ Leaf, outLTree ⋅ Fork] = [i1, i2]
+    ≡ Eq-+ (27)
+    outLTree ⋅ Leaf = i1
+    outLTree ⋅ Fork = i2
+    ≡ Igualdade extensional (71)
+    (outLTree ⋅ Leaf) x = i1 x
+    (outLTree ⋅ Fork) (x, y) = i2 (x, y)
+    ≡ Def-comp (72)
+    outLTree (Leaf x) = i1 x
+    outLTree (Fork (x, y)) = i2 (x, y)
     
 
+#### 8. Recorde a função `map :: (a -> b) -> [a] -> [b]`. Assumindo como válida a seguinte propriedade dessa função,
+
+    k = map f ≡ k ⋅ [nil, cons] = [nil ⋅ cons] ⋅ (id + f × k)
+
+para `k` do mesmo tipo que `map f` e em que `cons (a, x) = a:x` e `nil x = []`, demonstre os factos seguintes:
+
+           map id = id
+    (map f) . nil = nil
+      map f (a:x) = (f a) : (map f x)
+
+**R:**
+
+    k ⋅ [nil, cons] = [nil, cons] ⋅ (id + (f × k))
+    ≡ Def-k
+    (map id) ⋅ [nil, cons] = [nil, cons] ⋅ (id + (f × (map id)))
+    ≡ Def-f
+    (map id) ⋅ [nil, cons] = [nil, cons] ⋅ (id + (id × (map id)))
+    ≡ Def-(map id)
+    (map id) ⋅ [nil, cons] = [nil, cons] ⋅ (id + (id × id))
+    ≡ Functor-id-× (15)
+    (map id) ⋅ [nil, cons] = [nil, cons] ⋅ (id + id)
+    ≡ Functor-id-+ (26)
+    (map id) ⋅ [nil, cons] = [nil, cons] ⋅ id
+    ≡ Natural-id (1)
+    (map id) ⋅ [nil, cons] = [nil, cons]
+    ≡ Natural-id (1)
+    (map id) ⋅ [nil, cons] = id ⋅ [nil, cons]
+    ≡ Leibniz (5)
+    map id = id
+
+**R:**
+
+    (map f) ⋅ [nil, cons] = [nil, cons] ⋅ (id + (f × k))
+    ≡ Fusão-× (9)
+    [map f ⋅ nil, map f ⋅ cons] = [nil, cons] ⋅ (id + (f × k))
+    ≡ Absorção-+ (21)
+    [map f ⋅ nil, map f ⋅ cons] = [nil ⋅ id, cons ⋅ (f × k)]
+    ≡ Eq-+ (27)
+    (map f) ⋅ nil = nil ⋅ id
+    (map f) ⋅ cons = cons ⋅ (f × k)
+    ≡ Natural-id (1)
+    (map f) ⋅ nil = nil
+    (map f) ⋅ cons = cons ⋅ (f × k)
+
+    
+**R:**
+
+    (map f) ⋅ [nil, cons] = [nil, cons] ⋅ (id + (f × (map f)))
+    ≡ Fusão-× (9)
+    [map f ⋅ nil, map f ⋅ cons] = [nil, cons] ⋅ (id + (f × (map f)))
+    ≡ Absorção-+ (21)
+    [map f ⋅ nil, map f ⋅ cons] = [nil ⋅ id, cons ⋅ (f × (map f))]
+    ≡ Eq-+ (27)
+    (map f) ⋅ nil = nil ⋅ id
+    (map f) ⋅ cons = cons ⋅ (f × (map f))
+    ≡ Natural-id (1)
+    (map f) ⋅ nil = nil
+    (map f) ⋅ cons = cons ⋅ (f × (map f))
+    ≡ Def-f
+    (map f) ⋅ nil = nil
+    (map f) ⋅ cons = cons ⋅ (f × (map f))
+    ≡ Igualdade extensional (71)
+    ((map f) ⋅ nil) x = nil x
+    ((map f) ⋅ cons) (a, x) = (cons ⋅ (f × (map f))) (a, x)
+    ≡ Def-comp (72)
+    map f (nil x) = nil x
+    map f (cons (a, x)) = cons ((f × (map f)) (a, x))
+    ≡ Def-nil
+    map f [] = []
+    map f (cons (a, x)) = cons ((f × (map f)) (a, x))
+    ≡ Def-x (77)
+    map f [] = []
+    map f (cons (a, x)) = cons (f a, map f x)
+    ≡ Def-cons
+    map f [] = []
+    map f (a:x) = (f a):(map f x)
+
+    
+#### 9⋅ Mostre que a função `for b i`, é solução da equação seguinte, em x: `x ⋅ in = [i, b] ⋅ (id + x)`, onde:
+
+    for b i 0 = i
+    for b i (n + 1) = b (for b i n)
+
+    in = [0, succ]
+    succ n = n + 1
+
+
+**R:**
+
+    x ⋅ in = [i, b] ⋅ (id + x)
+    ≡ Def-in
+    x ⋅ [0, succ] = [i, b] ⋅ (id + x)
+    ≡ Fusão-+ (20)
+    [x ⋅ 0, x ⋅ succ] = [i, b] ⋅ (id + x)
+    ≡ Absorção-+ (21)
+    [x ⋅ 0, x ⋅ succ] = [i ⋅ id, b ⋅ x]
+    ≡ Natural-id (1)
+    [x ⋅ 0, x ⋅ succ] = [i, b ⋅ x]
+    ≡ Eq-+ (27)
+    x ⋅ 0 = i
+    x ⋅ succ = b ⋅ x
+    ≡ Igualdade extensional (71)
+    (x ⋅ 0) n = i n
+    (x ⋅ succ) n = (b ⋅ x) n
+    ≡ Def-comp (72)
+    x (0 n) = i n
+    x (succ n) = b (x n)
+    ≡ Fusão-const (4)
+    x 0 = i
+    x (succ n) = b (x n)
+    ≡ Def-succ
+    x 0 = i
+    x (n + 1) = b (x n)
+    ≡ Def-x
+    for b i 0 = i
+    for b i (n + 1) = b (for b i n)
