@@ -84,7 +84,7 @@ Não podemos fazer nada, por isso já sabemos a primeira parte da propriedade gr
 
 #### 4. 
 
-* Use a propriedade universal da esquerda para demonstrar a lei da reflexão `for succ 0 = id` e propriedade: `for succ 1 = succ`.
+Use a propriedade universal da esquerda para demonstrar a lei da reflexão `for succ 0 = id` e propriedade: `for succ 1 = succ`.
 
     for succ 0 = id
     ≡ Def for
